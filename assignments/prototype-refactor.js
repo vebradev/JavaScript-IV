@@ -1,3 +1,5 @@
+console.log("🔥🔥🔥🔥🔥🔥🔥 PART I 🔥🔥🔥🔥🔥🔥🔥");
+
 /* 
 
 Prototype Refactor
