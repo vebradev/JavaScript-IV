@@ -29,8 +29,18 @@ class Instructor extends Person {
   demo(subject) {
     console.log(`Today we are learning about ${subject}`);
   }
-  grade(student) {
-    console.log(`${student.name} receives a perfect score on ${subject}`);
+  
+  grade(student, subject) {
+    let grade = Math.round(Math.random() * 10);
+
+    if (grade >= 5) {
+      student.grade = student.grade + grade;
+    } else {
+      student.grade = student.grade - grade;
+    }
+    console.log(
+      `${student.name} receives ${student.grade} score on ${subject}`
+    );
   }
 }
 
@@ -42,6 +52,7 @@ class Student extends Person {
     this.previousBackground = arg.previousBackground;
     this.className = arg.className;
     this.favSubjects = arg.favSubjects;
+    this.grade = arg.grade;
   }
 
   listSubjects() {
@@ -54,6 +65,13 @@ class Student extends Person {
   }
   sprintChallenge(subject) {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+  graduate() {
+    if (this.grade > 70) {
+      console.log(`${this.name} successfully graduated from Lambda School!`);
+    } else {
+      console.log("Extra work is needed. Keep pushing!");
+    }
   }
 }
 
@@ -120,7 +138,8 @@ const betty = new Student({
   gender: "F",
   previousBackground: "School graduate",
   className: "WEBEU3",
-  favSubjects: ["HTML", "CSS", "JS"]
+  favSubjects: ["HTML", "CSS", "JS"],
+  grade: 80
 });
 
 const debie = new Student({
@@ -130,7 +149,8 @@ const debie = new Student({
   gender: "F",
   previousBackground: "College dropout in UX",
   className: "UXEU2",
-  favSubjects: ["Design Theory", "User Behaviour", "Testing"]
+  favSubjects: ["Design Theory", "User Behaviour", "Testing"],
+  grade: 85
 });
 
 const robert = new Student({
@@ -140,7 +160,8 @@ const robert = new Student({
   gender: "M",
   previousBackground: "Digital marketing specialist",
   className: "WEBEU3",
-  favSubjects: ["JS", "Computer Science", "Algorithms"]
+  favSubjects: ["JS", "Computer Science", "Algorithms"],
+  grade: 50
 });
 
 const diana = new Student({
@@ -150,7 +171,8 @@ const diana = new Student({
   gender: "F",
   previousBackground: "Graphic Designer",
   className: "UXEU2",
-  favSubjects: ["Design Theory", "User Behaviour"]
+  favSubjects: ["Design Theory", "User Behaviour"],
+  grade: 90
 });
 
 // => ProjectManager objects
